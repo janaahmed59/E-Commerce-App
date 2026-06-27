@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\janjonnnn\\E-Commerce App\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9DE03F9C-6B86-483C-B8EA-C266CA1768EF}|E-Commerce App\\E-Commerce App.csproj|c:\\janjonnnn\\e-commerce app\\e-commerce app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DE03F9C-6B86-483C-B8EA-C266CA1768EF}|E-Commerce App\\E-Commerce App.csproj|solutionrelative:e-commerce app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DE03F9C-6B86-483C-B8EA-C266CA1768EF}|E-Commerce App\\E-Commerce App.csproj|c:\\janjonnnn\\e-commerce app\\e-commerce app\\migrations\\20260625124320_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DE03F9C-6B86-483C-B8EA-C266CA1768EF}|E-Commerce App\\E-Commerce App.csproj|solutionrelative:e-commerce app\\migrations\\20260625124320_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "20260625124320_init.cs",
+              "DocumentMoniker": "C:\\janjonnnn\\E-Commerce App\\E-Commerce App\\Migrations\\20260625124320_init.cs",
+              "RelativeDocumentMoniker": "E-Commerce App\\Migrations\\20260625124320_init.cs",
+              "ToolTip": "C:\\janjonnnn\\E-Commerce App\\E-Commerce App\\Migrations\\20260625124320_init.cs",
+              "RelativeToolTip": "E-Commerce App\\Migrations\\20260625124320_init.cs",
+              "ViewState": "AgIAAMcAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-25T12:43:21.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\janjonnnn\\E-Commerce App\\E-Commerce App\\Program.cs",
+              "RelativeDocumentMoniker": "E-Commerce App\\Program.cs",
+              "ToolTip": "C:\\janjonnnn\\E-Commerce App\\E-Commerce App\\Program.cs*",
+              "RelativeToolTip": "E-Commerce App\\Program.cs*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-25T12:24:03.485Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
