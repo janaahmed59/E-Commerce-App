@@ -160,3 +160,5 @@ C:\janjonnnn\E-Commerce App\E-Commerce App\obj\Debug\net10.0\refint\E-Commerce A
 C:\janjonnnn\E-Commerce App\E-Commerce App\obj\Debug\net10.0\E-Commerce App.pdb
 C:\janjonnnn\E-Commerce App\E-Commerce App\obj\Debug\net10.0\E-Commerce App.genruntimeconfig.cache
 C:\janjonnnn\E-Commerce App\E-Commerce App\obj\Debug\net10.0\ref\E-Commerce App.dll
+C:\janjonnnn\E-Commerce App\E-Commerce App\obj\Debug\net10.0\E-Commerce App.sourcelink.json
+C:\janjonnnn\E-Commerce App\E-Commerce App\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

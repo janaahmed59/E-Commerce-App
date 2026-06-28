@@ -1,6 +1,7 @@
 ﻿using E_Commerce_App.DTOs.UserDTO;
 using E_Commerce_App.Models;
-
+using E_Commerce_App.UnitOfWorkLayer;
+using E_Commerce_App.UnitOfWorkLayer.Interface;
 namespace E_Commerce_App.Repo
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
@@ -19,7 +20,8 @@ namespace E_Commerce_App.Repo
 
         public T GetById(int id)
         {
-            return _context.Set<T>().Find(id);
+            var user = _context.Set<T>().Find(id);
+            return user; 
         }
 
         public void Add(T entity)

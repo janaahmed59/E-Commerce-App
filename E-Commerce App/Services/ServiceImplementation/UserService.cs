@@ -1,8 +1,11 @@
 ﻿using E_Commerce_App.DTOs.UserDTO;
 using E_Commerce_App.Models;
-using E_Commerce_App.UnitOfWork.Interface;
-using E_Commerce_App.Services.Interface;
 using E_Commerce_App.Repo;
+using E_Commerce_App.Services.Interface;
+using E_Commerce_App.UnitOfWorkLayer;
+using E_Commerce_App.UnitOfWorkLayer.Interface;
+using System.Security.Cryptography;
+using System.Text;
 namespace E_Commerce_App.Services.ServiceImplementation
 {
     public class UserService : IUserService
@@ -27,7 +30,12 @@ namespace E_Commerce_App.Services.ServiceImplementation
             var user = repo.GetById(id);
             if (user != null)
             {
-                user.Password = Dto.NewPassword;
+                using var hmac = new HMACSHA512();
+                user.PasswordSalt = Convert.ToBase64String(hmac.Key);
+
+                user.Password = Convert.ToBase64String(
+                    hmac.ComputeHash(
+                        Encoding.UTF8.GetBytes(Dto.NewPassword)));
                 repo.Update(user);
                 _unitOfWork.Save();
             }
@@ -42,19 +50,6 @@ namespace E_Commerce_App.Services.ServiceImplementation
                 repo.Update(user);
                 _unitOfWork.Save();
             }
-        }
-        public void RegisterUser(RegisterUserDTO dto)
-        {
-            var repo = _unitOfWork.Repository<User>();
-            var user = new User
-            {
-                Name = dto.Name,
-                Email = dto.Email,
-                Password = dto.Password,
-                Role = "Cutomer"
-            };
-            repo.Add(user);
-            _unitOfWork.Save();
         }
         public void DeleteProfile(int id)
         {
