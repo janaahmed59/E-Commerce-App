@@ -40,7 +40,7 @@ namespace E_Commerce_App.Services.ServiceImplementation
                 Role = "Customer"
             };
 
-            _unit.user.Add(user);
+            _unit.user.Create(user);
             _unit.Save();
             return new AuthDTO
             {

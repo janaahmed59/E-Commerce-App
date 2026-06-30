@@ -24,7 +24,7 @@ namespace E_Commerce_App.Repo
             return user; 
         }
 
-        public void Add(T entity)
+        public void Create(T entity)
         {
             _context.Set<T>().Add(entity);
         }
