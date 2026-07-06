@@ -5,10 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{CBC242BA-C27C-88C3-80D0-D2F3A6AF84F6}|E-Commerce App\\E-Commerce App.csproj|c:\\janjonnnn\\e-commerce app\\e-commerce app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CBC242BA-C27C-88C3-80D0-D2F3A6AF84F6}|E-Commerce App\\E-Commerce App.csproj|solutionrelative:e-commerce app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CBC242BA-C27C-88C3-80D0-D2F3A6AF84F6}|E-Commerce App\\E-Commerce App.csproj|c:\\janjonnnn\\e-commerce app\\e-commerce app\\services\\serviceimplementation\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CBC242BA-C27C-88C3-80D0-D2F3A6AF84F6}|E-Commerce App\\E-Commerce App.csproj|solutionrelative:e-commerce app\\services\\serviceimplementation\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,17 +17,8 @@
           "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AuthenticationService.cs",
-              "DocumentMoniker": "C:\\janjonnnn\\E-Commerce App\\E-Commerce App\\Services\\ServiceImplementation\\AuthenticationService.cs",
-              "RelativeDocumentMoniker": "E-Commerce App\\Services\\ServiceImplementation\\AuthenticationService.cs",
-              "ToolTip": "C:\\janjonnnn\\E-Commerce App\\E-Commerce App\\Services\\ServiceImplementation\\AuthenticationService.cs*",
-              "RelativeToolTip": "E-Commerce App\\Services\\ServiceImplementation\\AuthenticationService.cs*",
-              "ViewState": "AgIAABYAAAAAAAAAAAAQwCoAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-30T13:19:27.705Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Document",
@@ -39,16 +26,12 @@
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\janjonnnn\\E-Commerce App\\E-Commerce App\\Program.cs",
               "RelativeDocumentMoniker": "E-Commerce App\\Program.cs",
-              "ToolTip": "C:\\janjonnnn\\E-Commerce App\\E-Commerce App\\Program.cs",
-              "RelativeToolTip": "E-Commerce App\\Program.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwCEAAABKAAAAAAAAAA==",
+              "ToolTip": "C:\\janjonnnn\\E-Commerce App\\E-Commerce App\\Program.cs*",
+              "RelativeToolTip": "E-Commerce App\\Program.cs*",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAkwBcAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-30T13:16:48.386Z",
+              "WhenOpened": "2026-07-05T23:59:12.043Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }

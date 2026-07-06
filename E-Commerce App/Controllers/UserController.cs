@@ -2,6 +2,7 @@
 using E_Commerce_App.Services.Interface;
 using E_Commerce_App.UnitOfWorkLayer;
 using E_Commerce_App.UnitOfWorkLayer.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
@@ -18,6 +19,7 @@ namespace E_Commerce_App.Controllers
             userService = service;
         }
         [HttpGet("getall")]
+        [Authorize (Roles = "Admin")]
         public IActionResult GetAllUsers()
         {
             return Ok(userService.GetAllUsers()); 

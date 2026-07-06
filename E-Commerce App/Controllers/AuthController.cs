@@ -24,7 +24,8 @@ namespace E_Commerce_App.Controllers
         {
             var user = _service.Login(dto);
             if (user == null) return NotFound();
-            else return Ok();
+            else return Ok(user);
+            // return Ok(_service.Login(dto));
         }
     }
 }

@@ -69,7 +69,7 @@
         // |-- GetOrderDetails
         // |-- GetAllOrders
         // |-- UpdateOrderStatus
-
+        // |-- CancelOrder
 
 
     }
