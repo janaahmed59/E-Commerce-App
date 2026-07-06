@@ -7,10 +7,14 @@ namespace E_Commerce_App.UnitOfWorkLayer
     {
         private readonly AppDbContext _context;
         public IUserRepository user { get; set; }
+        public ICartRepository cart { get; set; }
+        public IOrderRepository order { get; set; }
         public UnitOfWork(AppDbContext context)
         {
             _context = context;
             user = new UserRepository(context);
+            cart = new CartRepository(context);
+            order = new OrderRepository(context);
         }
         public IGenericRepository<T> Repository<T>()  where T : class
         {

@@ -14,47 +14,37 @@ namespace E_Commerce_App.Services.ServiceImplementation
         {
             _unit = unit;
         }
-        public GetCartDTO GetCart()
+        public GetCartDTO GetCart(int userid)
         {
-            var repo = _unit.Repository<Cart>();
-            var cart = repo.GetAll().Select(c => new GetCartDTO
+            var cart = _unit.cart.GetCartWithItems(userid);
+            if (cart == null) return null;
+            return new GetCartDTO
             {
-                Items = c.CartItems.Select(item => new CartitemsDTO
+                Items = cart.CartItems.Select(item => new CartitemsDTO
                 {
                     productName = item.Product.Name,
                     Quantity = item.Quantity,
                 }).ToList()
-            }).FirstOrDefault();
-
-            /*
-                return List<GetCartDTO> 
-                var cart = repo.GetAll().SelectMAny(c => c.CartItems)
-                                .Select(items => new GetCartDTO
-                                {
-                                    productName = item.Product.Name,
-                                    Quantity = item.Quantity
-                                }).ToList();
-                return cart;
-            */
-            return cart;
+            };
         }
         public void AddToCart(int userid ,AddToCartDTO dto)
         {
             // cart, cart item 
-
             var cartRepo = _unit.Repository<Cart>();
             var cartitemRepo = _unit.Repository<CartItem>();
             var cart = cartRepo.GetAll().FirstOrDefault(c => c.UserId == userid); // get cart of user (انهي يوزر صاحب الكارت دا)
-            var cartitem = cartitemRepo.GetAll().FirstOrDefault(c => c.CartId == cart.Id && c.ProductId == dto.ProductId);
-            // get the items in this cart and the product that  i have added to it and check if it exist in cart or not
-            if(cart == null) // create new cart for this user if he doesnot have one
+            if (cart == null) // create new cart for this user if he doesnot have one
             {
                 var NewCart = new Cart
                 {
                     UserId = userid
                 };
                 cartRepo.Create(NewCart);
+                cart = NewCart;
             }
+            var cartitem = cartitemRepo.GetAll().FirstOrDefault(c => c.CartId == cart.Id && c.ProductId == dto.ProductId);
+            // get the items in this cart and the product that  i have added to it and check if it exist in cart or not
+            
             if (cartitem == null)
             {
                 var newitem = new CartItem

@@ -82,16 +82,6 @@
         "tags": [
           "Cart"
         ],
-        "parameters": [
-          {
-            "name": "userid",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -121,16 +111,6 @@
         "tags": [
           "Cart"
         ],
-        "parameters": [
-          {
-            "name": "userid",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -159,16 +139,6 @@
       "delete": {
         "tags": [
           "Cart"
-        ],
-        "parameters": [
-          {
-            "name": "userid",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
         ],
         "requestBody": {
           "content": {
@@ -301,16 +271,6 @@
         "tags": [
           "Order"
         ],
-        "parameters": [
-          {
-            "name": "userid",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -356,16 +316,6 @@
       "post": {
         "tags": [
           "Order"
-        ],
-        "parameters": [
-          {
-            "name": "userid",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
         ],
         "responses": {
           "200": {
@@ -630,16 +580,6 @@
         "tags": [
           "User"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -671,16 +611,6 @@
         "tags": [
           "User"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -711,16 +641,6 @@
       "delete": {
         "tags": [
           "User"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
         ],
         "responses": {
           "200": {

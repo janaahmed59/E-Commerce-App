@@ -6,6 +6,8 @@ namespace E_Commerce_App.UnitOfWorkLayer.Interface
     {
         public IGenericRepository<T> Repository<T>() where T : class;
         public IUserRepository user { get; set; }
+        public ICartRepository cart { get; set; }
+        public IOrderRepository order { get; set; }
         public void Save();
 
     }

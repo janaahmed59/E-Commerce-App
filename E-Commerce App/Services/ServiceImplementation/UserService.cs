@@ -27,6 +27,7 @@ namespace E_Commerce_App.Services.ServiceImplementation
         public void UpdateProfile(int id, UpdatePassDTO Dto)
         {
             var repo = _unitOfWork.Repository<User>();
+
             var user = repo.GetById(id);
             if (user != null)
             {

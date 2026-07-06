@@ -1,11 +1,16 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using E_Commerce_App.DTOs.OrderDTO;
+using E_Commerce_App.Models;
 using E_Commerce_App.Services.Interface;
 using Microsoft.AspNetCore.Authorization;
-using E_Commerce_App.DTOs.OrderDTO;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Claims;
+
 namespace E_Commerce_App.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class OrderController : ControllerBase
     {
@@ -15,27 +20,26 @@ namespace E_Commerce_App.Controllers
             _orderService = order;
         }
         [HttpGet("GetMyOrders")]
-        public IActionResult GetMyOrders(int userid)
+        public IActionResult GetMyOrders()
         {
-            _orderService.GetMyOrders(userid);
-            return Ok();
+            var userid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            return Ok(_orderService.GetMyOrders(userid));
         }
         [HttpGet("GetOrderDetails")]
         public IActionResult GetOrderDetails(int orderid)
         {
-            _orderService.GetOrderById(orderid);
-            return Ok();
+            return Ok(_orderService.GetOrderById(orderid));
         }
         [HttpGet("GetAllOrders")]
         [Authorize (Roles = "Admin")]
         public IActionResult GetAllOrders()
         {
-            _orderService.GetAllOrders();
-            return Ok();
+            return Ok(_orderService.GetAllOrders());
         }
         [HttpPost("PlaceOrder")]
-        public IActionResult PlaceOrder(int userid)
+        public IActionResult PlaceOrder()
         {
+            var userid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             _orderService.PlaceOrder(userid);
             return Ok();
         }

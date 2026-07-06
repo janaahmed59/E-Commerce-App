@@ -22,9 +22,8 @@ namespace E_Commerce_App.Services.ServiceImplementation
             // 6. Save the order to the database
             // 7. Clear the user's cart
             // 8. Save changes to the database
-            var orderRepo = _unit.Repository<Order>();
-            var cartRepo = _unit.Repository<Cart>();
-            var cart = cartRepo.GetAll().FirstOrDefault(u => u.UserId == userid); // 1
+
+            var cart = _unit.cart.GetCartWithItems(userid);
             if(cart == null)
             {
                 throw new Exception("Cart not found");
@@ -50,14 +49,14 @@ namespace E_Commerce_App.Services.ServiceImplementation
                 });
                 order.TotalPrice += item.Product.Price * item.Quantity; // 5
             }
-            orderRepo.Create(order); // 6
+            _unit.order.Create(order); // 6
             cart.CartItems.Clear(); // 7
             _unit.Save(); // 8
         }
         public IEnumerable<GetUserOrderDTO> GetMyOrders(int userid)
         {
-            var Repo = _unit.Repository<Order>();
-            var orders = Repo.GetAll().Where(o => o.UserId == userid);
+            var orders = _unit.order.GetOrderByUser(userid);
+          
             return orders.OrderByDescending(o => o.OrderDate)
                          .Select(o => new GetUserOrderDTO
                          {
@@ -69,8 +68,8 @@ namespace E_Commerce_App.Services.ServiceImplementation
         }
         public GetUserOrderDetailsDTO GetOrderById(int orderid)
         {
-            var repo = _unit.Repository<Order>();
-            var order = repo.GetById(orderid);
+            var order = _unit.order.GetOrderWithitems(orderid);
+           
             if (order == null)
             {
                 throw new Exception("Order not found");
@@ -105,7 +104,6 @@ namespace E_Commerce_App.Services.ServiceImplementation
         }
         public void UpdateOrderStatus(int orderid, UpdateStatusDTO dto)
         {
-
             var orderRepo = _unit.Repository<Order>();
             var order = orderRepo.GetById(orderid);
             if (order == null)
