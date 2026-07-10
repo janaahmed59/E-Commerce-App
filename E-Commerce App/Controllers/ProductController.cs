@@ -15,13 +15,13 @@ namespace E_Commerce_App.Controllers
         {
             _product = product;
         }
-        [HttpGet("GetbyId")]
+        [HttpGet("{id}")]
         public IActionResult GetProductByID(int id)
         {
             var list = _product.GetById(id);
             return Ok(list);
         }
-        [HttpGet("Search")]
+        [HttpGet("{name}")]
         public IActionResult SearchForProduct(string name)
         {
             var product = _product.SearchForProduct(name);
@@ -34,7 +34,7 @@ namespace E_Commerce_App.Controllers
             _product.CreateProduct(dto);
             return Ok();
         }
-        [HttpPut("Price")]
+        [HttpPut("Price/{id}")]
         [Authorize(Roles = "Admin")]
         public IActionResult UpdatePrice(int id, UpdatePriceDTO dto)
         {
@@ -48,7 +48,8 @@ namespace E_Commerce_App.Controllers
             _product.UpdateDescription(id, dto);
             return Ok();
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteProduct(int id)
         {
             _product.DeleteProduct(id);

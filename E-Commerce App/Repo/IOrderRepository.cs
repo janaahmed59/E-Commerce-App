@@ -3,7 +3,8 @@ namespace E_Commerce_App.Repo
 {
     public interface IOrderRepository : IGenericRepository<Order>
     {
-        public List<Order> GetOrderByUser(int userId);
-        public Order GetOrderWithitems(int orderId);
+        public IEnumerable<Order> GetOrderByUser(int userId);
+        public Order GetOrderWithitems(int orderId , int userId);
+        public Order GetOrderById(int orderId, int userId);
     }
 }

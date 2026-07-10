@@ -2,7 +2,7 @@
 using E_Commerce_App.Services.Interface;
 using E_Commerce_App.UnitOfWorkLayer.Interface;
 using E_Commerce_App.Models;
-
+using E_Commerce_App.Enum;
 namespace E_Commerce_App.Services.ServiceImplementation
 {
     public class OrderService : IOrderService
@@ -35,19 +35,32 @@ namespace E_Commerce_App.Services.ServiceImplementation
             var order = new Order // 3
             {
                 UserId = userid,
-                OrderDate = DateTime.Now,
-                Status = "Pending",
+                OrderDate = DateTime.UtcNow,
+                Status = OrderStatus.Pending,
                 OrderItems = new List<OrderItem>(),
             };
             foreach (var item in cart.CartItems) // 4
             {
+                if(item.Quantity > item.Product.Stock)
+                {
+                    throw new Exception($"Not enough stock for product {item.Product.Name}");
+                }
+
                 order.OrderItems.Add(new OrderItem
                 {
                     ProductId = item.ProductId,
                     Quantity = item.Quantity,
                     Price = item.Product.Price
                 });
+                item.Product.Stock -= item.Quantity;
                 order.TotalPrice += item.Product.Price * item.Quantity; // 5
+            }
+            if (order.Status == OrderStatus.Cancelled)
+            {
+                foreach (var item1 in order.OrderItems)
+                {
+                    item1.Product.Stock += item1.Quantity;
+                }
             }
             _unit.order.Create(order); // 6
             cart.CartItems.Clear(); // 7
@@ -66,9 +79,9 @@ namespace E_Commerce_App.Services.ServiceImplementation
                              TotalPrice = o.TotalPrice
                          }).ToList();
         }
-        public GetUserOrderDetailsDTO GetOrderById(int orderid)
+        public GetUserOrderDetailsDTO GetOrderById(int orderid, int userid)
         {
-            var order = _unit.order.GetOrderWithitems(orderid);
+            var order = _unit.order.GetOrderWithitems(orderid, userid);
            
             if (order == null)
             {
@@ -90,7 +103,7 @@ namespace E_Commerce_App.Services.ServiceImplementation
         }
         public IEnumerable<GetUserOrderDTO> GetAllOrders() // Admin only
         {
-            var Repo = _unit.Repository<Order>();
+            var Repo = _unit.order;
             var orders = Repo.GetAll();
             var orderdto = orders.OrderByDescending(o => o.OrderDate)
                                 .Select(o => new GetUserOrderDTO
@@ -104,7 +117,7 @@ namespace E_Commerce_App.Services.ServiceImplementation
         }
         public void UpdateOrderStatus(int orderid, UpdateStatusDTO dto)
         {
-            var orderRepo = _unit.Repository<Order>();
+            var orderRepo = _unit.order;
             var order = orderRepo.GetById(orderid);
             if (order == null)
             {
@@ -114,15 +127,27 @@ namespace E_Commerce_App.Services.ServiceImplementation
             orderRepo.Update(order);
             _unit.Save();
         }
-        public void CancelOrder(int orderid)
+        public void CancelOrder(int orderid , int userid)
         {
-            var orderRepo = _unit.Repository<Order>();
+            var orderRepo = _unit.order;
             var order = orderRepo.GetById(orderid);
             if (order == null)
             {
                 throw new Exception("Order not found");
             }
-            order.Status = "Cancelled";
+            if(order.UserId != userid)
+            {
+                throw new UnauthorizedAccessException();
+            }
+            if(order.Status == OrderStatus.Delivered)
+            {
+                throw new Exception("Delivered orders cannot be cancelled.");
+            }
+            if (order.Status == OrderStatus.Cancelled)
+            {
+                throw new Exception("Order is already cancelled.");
+            }
+            order.Status = OrderStatus.Cancelled;
             orderRepo.Update(order);
             _unit.Save();
         }

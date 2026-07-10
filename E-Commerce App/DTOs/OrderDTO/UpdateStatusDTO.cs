@@ -1,7 +1,8 @@
-﻿namespace E_Commerce_App.DTOs.OrderDTO
+﻿using E_Commerce_App.Enum;
+namespace E_Commerce_App.DTOs.OrderDTO
 {
     public class UpdateStatusDTO
     {
-        public string NewStatus { get; set; }
+        public OrderStatus NewStatus { get; set; }
     }
 }

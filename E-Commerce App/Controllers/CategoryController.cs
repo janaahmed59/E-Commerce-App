@@ -22,20 +22,20 @@ namespace E_Commerce_App.Controllers
             return Ok(categories);
         }
         [HttpPost]
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateCategory(CreateCategoryDTO dto)
         {
             _category.CreateCategory(dto);
-            return Ok();
+            return Ok("Creted succesfully");
         }
         [HttpPut]
         [Authorize(Roles = "Admin")]
         public IActionResult UpdateCategory(int id, UpdateCategoryDTO dto)
         {
             _category.UpdateCategory(id, dto);
-            return Ok(dto);
+            return NoContent();
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
         public IActionResult DeleteCategory(int id)
         {

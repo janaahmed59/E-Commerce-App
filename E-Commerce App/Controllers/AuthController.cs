@@ -23,7 +23,7 @@ namespace E_Commerce_App.Controllers
         public IActionResult Login(LoginDTO dto)
         {
             var user = _service.Login(dto);
-            if (user == null) return NotFound();
+            if (user == null) return Unauthorized("Invalid email or password");
             else return Ok(user);
             // return Ok(_service.Login(dto));
         }

@@ -6,10 +6,10 @@ namespace E_Commerce_App.Services.Interface
     {
         public void PlaceOrder(int userid);
         public IEnumerable<GetUserOrderDTO> GetMyOrders(int userid);
-        public GetUserOrderDetailsDTO GetOrderById(int orderid);
+        public GetUserOrderDetailsDTO GetOrderById(int orderid, int userid);
         public IEnumerable<GetUserOrderDTO> GetAllOrders();
         public void UpdateOrderStatus(int orderid, UpdateStatusDTO dto);
-        public void CancelOrder(int orderid);
+        public void CancelOrder(int orderid, int userid);
     }
 }
 // |-- CreateOrder

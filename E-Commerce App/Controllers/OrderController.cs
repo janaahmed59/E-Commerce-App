@@ -25,10 +25,11 @@ namespace E_Commerce_App.Controllers
             var userid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             return Ok(_orderService.GetMyOrders(userid));
         }
-        [HttpGet("GetOrderDetails")]
+        [HttpGet("GetOrderDetails/{orderid}")]
         public IActionResult GetOrderDetails(int orderid)
         {
-            return Ok(_orderService.GetOrderById(orderid));
+            var userid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            return Ok(_orderService.GetOrderById(orderid, userid));
         }
         [HttpGet("GetAllOrders")]
         [Authorize (Roles = "Admin")]
@@ -41,20 +42,22 @@ namespace E_Commerce_App.Controllers
         {
             var userid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             _orderService.PlaceOrder(userid);
-            return Ok();
+            return Ok("Order Created succesfully");
         }
-        [HttpPut("UpdateOrderStatus")]
+        [HttpPut("UpdateOrderStatus/{orderid}")]
         [Authorize (Roles = "Admin")]
         public IActionResult UpdateOrderStatus(int orderid, UpdateStatusDTO dto)
         {
-            _orderService.UpdateOrderStatus(orderid, dto);
-            return Ok();
+            var userid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            _orderService.UpdateOrderStatus(orderid, userid,dto);
+            return NoContent();
         }
-        [HttpDelete("CancelOrder")]
+        [HttpDelete("CancelOrder/{orderid}")]
         public IActionResult CancelOrder(int orderid)
         {
-            _orderService.CancelOrder(orderid);
-            return Ok();
+            var userid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            _orderService.CancelOrder(orderid, userid); 
+            return NoContent();
         }
     }
 }

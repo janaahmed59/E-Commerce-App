@@ -30,21 +30,21 @@ namespace E_Commerce_App.Controllers
         {
             var userid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             _cart.AddToCart(userid, dto);
-            return Ok();
+            return Ok("Added succesfully");
         }
         [HttpPut]
         public IActionResult UpdateQuantity(UpdateQuantityDTO dto)
         {
             var userid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            _cart.UpdateQuantity(userid, dto);  
-            return Ok();    
+            _cart.UpdateQuantity(userid, dto);
+            return NoContent();   
         }
         [HttpDelete]
         public IActionResult RemoveFromCart( RemoveFromCartDTO dto)
         {
             var userid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             _cart.RemoveFromCart(userid, dto);
-            return Ok();
+            return NoContent();
         }
     }
 }
